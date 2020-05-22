@@ -1,0 +1,11 @@
+<div class="container">
+    <div class="row">
+        <div class="col-xs-2"></div>
+        <div class="col-md-8" style="text-align: center;">
+            <h2 *ngFor = "let user of user;">Bienvenue {{user.nom}}  {{user.prenom}} !</h2>
+            <p *ngFor = "let user of user;">GSB est une application de gestion des rapports des visites et des médecins</p>    
+            <img [src]="logoGSB" alt="logoGsb" style="margin-top: 65px; width: auto; height: 250px;">
+        </div>
+        <div class="col-xs-2"></div>
+    </div>
+</div>

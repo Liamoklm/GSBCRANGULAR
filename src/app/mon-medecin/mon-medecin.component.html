@@ -1,0 +1,50 @@
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-6 mx-auto">
+      <div class="md-form">
+        <input type="text"class="form-control" id="search" (keyup)="rechercheMedecin($event)" placeholder="Rechercher un nom de médecin"/>
+      </div>
+    </div>
+  </div>
+    <div class="tableau" style="margin-top:65px;height:350px; overflow: scroll;">
+      <table class="table">
+        <thead class="thead-dark">
+          <tr>
+            <th *ngFor = "let head of headElements;">{{head | titlecase}}</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor= "let medecin of medecins">
+          <td>{{medecin.nom}} </td>
+          <td>{{medecin.prenom}} </td>
+          <td>{{medecin.tel}} </td>
+          <td>{{medecin.adresse}} </td>
+          <td>{{medecin.departement}} </td>
+          <td><a (click)="afficherRapport(medecin)"><img width="65" src="../../assets/images/eyes.jpg"></a></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="row">
+  <table class="table">
+    <thead class="thead-dark">
+      <tr>
+        <th>Date</th>
+        <th>Motif</th>
+        <th>Bilan</th>
+        <th>Id Visiteur</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor= "let rapport of rapports">
+        <td>{{rapport.date}} </td>
+        <td>{{rapport.motif}} </td>
+        <td>{{rapport.bilan}} </td>
+        <td>{{rapport.idVisiteur}} </td>
+        </tr>
+        </tbody>
+        </table>
+      </div>
+
+</div>

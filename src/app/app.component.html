@@ -1,0 +1,14 @@
+<nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <ul class="nav navbar-nav">
+      <li routerLinkActive="active"><a routerLink="accueil">Gestion des visites et des médecins</a></li>
+      <li routerLinkActive="active"><a routerLink="mes-visites">Mes visites</a></li>
+      <li routerLinkActive="active"><a routerLink="medecin">Médecin</a></li>
+      <li routerLinkActive="active"><a routerLink="medicament">Médicament</a></li>
+    </ul>
+    <ul class="nav navbar-right">
+      <button class="btn btn-danger" *ngIf="authStatus" (click)="onSignOut()">Se déconnecter</button>      
+    </ul>
+  </div>
+</nav>
+<router-outlet></router-outlet>
