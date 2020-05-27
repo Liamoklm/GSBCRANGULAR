@@ -45,4 +45,22 @@ export class MainService{
                 this.emitSubject();
             });
     }
+
+    updateMedecin(id, adresse, tel, spe) {
+       return new Promise((resolve, reject) => {
+           this.httpClient.get<any>('https://webserv-gr4.sio-carriat.com/gsbapi/?id2=' + id + '&adresse=' + adresse + '&tel=' + tel + '&speComplementaire=' + spe).subscribe(
+            (reponse) => {
+              resolve('Modification réussie');
+            });
+       });
+   }
+
+   addMedecin(firstname, lastname, phone, adresse, spe, dep) {
+    return new Promise((resolve, reject) => {
+        this.httpClient.get<any>('https://webserv-gr4.sio-carriat.com/gsbapi/?addMed=' + lastname + '&firstname=' + firstname + '&phone=' + phone + '&adresse=' + adresse + '&spe=' + spe + '&dep=' + dep).subscribe(
+         (reponse) => {
+           resolve('Modification réussie');
+         });
+    });
 }
+  }

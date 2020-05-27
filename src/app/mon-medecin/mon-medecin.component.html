@@ -8,6 +8,7 @@
     </div>
   </div>
     <div class="tableau" style="margin-top:65px;height:350px; overflow: scroll;">
+      <button (click)="showAddMedCard()" class="btn btn-primary">Ajouter un médecin</button>
       <table class="table">
         <thead class="thead-dark">
           <tr>
@@ -22,29 +23,63 @@
           <td>{{medecin.adresse}} </td>
           <td>{{medecin.departement}} </td>
           <td><a (click)="afficherRapport(medecin)"><img width="65" src="../../assets/images/eyes.jpg"></a></td>
+          <td><a (click)="afficherMedecin(medecin)">Modifier</a></td>
         </tr>
       </tbody>
     </table>
   </div>
-  <div class="row">
-  <table class="table">
-    <thead class="thead-dark">
-      <tr>
-        <th>Date</th>
-        <th>Motif</th>
-        <th>Bilan</th>
-        <th>Id Visiteur</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr *ngFor= "let rapport of rapports">
-        <td>{{rapport.date}} </td>
-        <td>{{rapport.motif}} </td>
-        <td>{{rapport.bilan}} </td>
-        <td>{{rapport.idVisiteur}} </td>
-        </tr>
-        </tbody>
-        </table>
+
+      <!-- Update Medecin -->
+      <div class="card" style="width: 50%;" *ngIf="updateMed">
+        <div class="card-body">
+          <h3 class="card-title">Modifier Médecin</h3>
+          <br>
+          <form #form="ngForm" (ngSubmit)="modifierMedecin(updateMed)">
+            <input type="text" class="form-control" [(ngModel)]="updateMed.adresse" name="adresse" placeholder="Adresse" required><br>
+            <input type="text" class="form-control" [(ngModel)]="updateMed.tel" name="phone" placeholder="Téléphone" required><br>
+            <input type="text" class="form-control" [(ngModel)]="updateMed.specialitecomplementaire" name="spe" placeholder="Spécialsation" required><br>
+          <button type="submit" class="btn btn-primary">Modifier</button>
+        </form>
+
+        </div>
       </div>
 
+      <!-- Rapports -->
+      <div class="row">
+        <table class="table">
+          <thead class="thead-dark">
+            <tr>
+              <th>Date</th>
+              <th>Motif</th>
+              <th>Bilan</th>
+              <th>Nom Visiteur</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor= "let rapport of rapports">
+              <td>{{rapport.date}} </td>
+              <td>{{rapport.motif}} </td>
+              <td>{{rapport.bilan}} </td>
+              <td>{{rapport.nom}} </td>
+              </tr>
+              </tbody>
+              </table>
+        </div>
+        <!-- Add Medecin -->
+      <div class="card" style="width: 50%;" *ngIf="addMed">
+        <div class="card-body">
+          <h3 class="card-title">Ajouter un médecin</h3>
+          <br>
+          <form (ngSubmit)="createMedecin()">
+            <input type="text" class="form-control" [(ngModel)]="newMed.lastname" name="lastname" placeholder="Nom"><br>
+            <input type="text" class="form-control" [(ngModel)]="newMed.firstname" name="firstname" placeholder="Prénom"><br>
+            <input type="text" class="form-control" [(ngModel)]="newMed.phone" name="phone" placeholder="Téléphone"><br>
+            <input type="text" class="form-control" [(ngModel)]="newMed.adresse" name="adresse" placeholder="Adresse"><br>
+            <input type="text" class="form-control" [(ngModel)]="newMed.spe" name="spe" placeholder="Spécialsation"><br>
+            <input type="text" class="form-control" [(ngModel)]="newMed.dep" name="dep" placeholder="Département"><br>
+            <button type="submit" class="btn btn-primary">Ajouter</button>
+          </form>
+    </div>
+      </div>
 </div>
+
